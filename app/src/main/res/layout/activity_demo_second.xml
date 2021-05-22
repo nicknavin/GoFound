@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="androidx.databinding.ObservableArrayList&lt;String>" />
+        <variable
+            name="datamap"
+            type="androidx.databinding.ObservableArrayMap&lt;String,Object>" />
+        <variable
+            name="handler"
+            type="com.app.gofound.view.ui.DemoSecondActivity" />
+
+        <variable
+            name="custombiner"
+            type="com.app.gofound.custombinder.ImageViewBindingAdapterKt" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.DemoActivity"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(datamap.get(`key`+String.valueOf(handler.count))),default=`navin`}"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.get(handler.count),default=`navin`}"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/txtAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.get(handler.count),default=`35`}"
+            app:layout_constraintLeft_toRightOf="@+id/txtName"
+            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            android:layout_margin="20dp"
+            android:textSize="20sp"></TextView>
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="clickme"
+            app:layout_constraintLeft_toRightOf="@+id/txtName"
+            app:layout_constraintTop_toBottomOf="@+id/txtAge"
+            android:layout_margin="20dp"
+            android:onClick="@{(view) -> handler.clickButton(view)}"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</layout>

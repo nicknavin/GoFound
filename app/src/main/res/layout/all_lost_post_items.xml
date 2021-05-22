@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="lostdata"
+            type="com.app.gofound.pojo.Data" />
+
+
+    </data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imgPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:minHeight="100dp"
+        android:adjustViewBounds="true"
+        app:imageUrl="@{lostdata.images.size()>0?lostdata.images.get(0).post_image:`na`}"
+        app:layout_constraintCircleRadius="10dp"
+      />
+    <TextView
+        android:id="@+id/txtPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@{lostdata.first_name}"
+        android:layout_margin="20dp"
+        android:textSize="15sp"
+        android:gravity="left"
+        />
+
+
+</LinearLayout>
+</layout>
